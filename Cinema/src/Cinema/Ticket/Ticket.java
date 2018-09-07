@@ -101,8 +101,8 @@ public class Ticket {
 
 	@Override
 	public String toString() {
-		return "Ticket [tno=" + tno + ", mid=" + mid + ", mname=" + mname + ", tprice=" + tprice + ", mdate=" + mdate
-				+ ", scrno=" + scrno + ", seatno=" + seatno + "]";
+		return "Ticket [티켓번호=" + tno + ", ID=" + mid + ", 회원이름=" + mname + ", 티켓가격=" + tprice + ", 영화시간=" + mdate
+				+ ", 상영관=" + scrno + ", 좌석번호=" + seatno + "]";
 	}
 
 }

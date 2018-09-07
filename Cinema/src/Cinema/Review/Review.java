@@ -70,7 +70,7 @@ public class Review {
 
 	@Override
 	public String toString() {
-		return "Review [rno=" + rno + ", mname=" + mname + ", mid=" + mid + ", score=" + score + ", memo=" + memo + "]";
+		return "Review [리뷰번호=" + rno + ", 영화명=" + mname + ", ID=" + mid + ", 평점=" + score + ", 후기=" + memo + "]";
 	}
 
 }

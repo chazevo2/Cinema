@@ -41,7 +41,7 @@ public class Screen {
 
 	@Override
 	public String toString() {
-		return "Screen [scrno=" + scrno + ", line=" + line + ", seat=" + seat + "]";
+		return "Screen [상영관번호=" + scrno + ", 라인 수=" + line + ", 라인별 좌석수 =" + seat + "]";
 	}
 
 }

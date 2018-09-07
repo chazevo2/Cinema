@@ -91,8 +91,8 @@ public class Schedule {
 
 	@Override
 	public String toString() {
-		return "Schedule [sno=" + sno + ", mno=" + mno + ", mname=" + mname + ", mday=" + mday + ", mtime=" + mtime
-				+ ", sprice=" + sprice + ", scrno=" + scrno + ", ex_seat=" + ex_seat + "]";
+		return "Schedule [시간표 번호=" + sno + ", 영화번호=" + mno + ", 영화명=" + mname + ", 상영날짜=" + mday + ", 상영시간=" + mtime
+				+ ", 예매가격=" + sprice + ", 상영관=" + scrno + ", 잔여좌석수=" + ex_seat + "]";
 	}
 
 }

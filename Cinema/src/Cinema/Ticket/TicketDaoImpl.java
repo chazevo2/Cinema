@@ -109,7 +109,7 @@ public class TicketDaoImpl implements TicketDao {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, sno);
 			rs = pstmt.executeQuery();
-			if (rs.next()) {
+			while (rs.next()) {
 				list.add(new Ticket(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getInt(5),
 						rs.getInt(6), rs.getString(7), rs.getInt(8), rs.getString(9)));
 			}

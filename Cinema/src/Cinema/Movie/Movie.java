@@ -70,8 +70,8 @@ public class Movie {
 
 	@Override
 	public String toString() {
-		return "Movie [mno=" + mno + ", mname=" + mname + ", story=" + story + ", runtime=" + runtime + ", genre="
-				+ genre + ", rate=" + rate + "]";
+		return "Movie [영화번호=" + mno + ", 영화이름=" + mname + ", 줄거리=" + story + ", 런타임=" + runtime + ", 장르="
+				+ genre + ", 등급=" + rate + "]";
 	}
 
 }

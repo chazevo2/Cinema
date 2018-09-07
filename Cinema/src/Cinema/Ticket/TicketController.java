@@ -20,9 +20,10 @@ public class TicketController {
 
 	public ArrayList<String> using(Ticket t) {
 		ArrayList<String> useSeat = new ArrayList<String>();
-		if (service.getBySno(t.getSno()) == null)
+		ArrayList<Ticket> list = service.getBySno(t.getSno());
+		if (list == null)
 			return null;
-		for (Ticket t2 : service.getBySno(t.getSno())) {
+		for (Ticket t2 : list) {
 			useSeat.add(t2.getSeatno());
 		}
 		return useSeat;
@@ -40,7 +41,7 @@ public class TicketController {
 		int cnt = 0;
 		for (int i = 0; i < view.length; i++) {
 			for (int j = 0; j < view[i].length; j++) {
-				seatno = (char) (i + 97) + "" + j + 1;
+				seatno = (char) (i + 97) + "" + (j + 1);
 				if (using(t) != null) {
 					if (!useSeat.contains(seatno))
 						view[i][j] = seatno;
@@ -94,6 +95,7 @@ public class TicketController {
 		int age = MembersController.age(t.getMid());
 		if (age < rate) {
 			System.out.println("연령제한으로 티켓구매가 불가능합니다");
+			return;
 		}
 		System.out.print("스케줄 번호:");
 		t.setSno(sc.nextInt());
@@ -110,7 +112,7 @@ public class TicketController {
 			System.out.println("잘못된 입력입니다.");
 			return;
 		}
-		m.getPoint();
+		m.setPoint(usePoint);
 		boolean flag = seatView(t, ScheduleController.getScrno(t.getSno()));
 		if (!flag) {
 			return;
@@ -139,19 +141,21 @@ public class TicketController {
 			}
 		}
 		service.addTicket(t);
-		ScheduleController.editSeat(t.getSno(), 1);
+		ScheduleController.editSeat(t.getSno(), 0);
 		MembersController.usePoint(m, 0);
 		System.out.println("예매가 완료되었습니다.");
 	}
 
 	public void delTicket(Scanner sc) {
 		ArrayList<Ticket> list;
+		String mid;
 		if (MembersController.getLoginId().equals("admin")) {
 			System.out.print("회원 ID:");
-			String mid = sc.next();
+			mid = sc.next();
 			list = service.getByMid(mid);
 		} else {
-			list = service.getByMid(MembersController.getLoginId());
+			mid = MembersController.getLoginId();
+			list = service.getByMid(mid);
 		}
 		if (list == null) {
 			System.out.println("예매 기록이 없습니다.");
@@ -164,9 +168,9 @@ public class TicketController {
 		Ticket t = service.getTicket(tno);
 		if (t == null)
 			System.out.println("잘못된 예매 번호입니다");
-		if (t.getMid().equals(MembersController.getLoginId()))
+		if (t.getMid().equals(mid))
 			service.delTicket(tno);
-		ScheduleController.editSeat(t.getSno(), 0);
+		ScheduleController.editSeat(t.getSno(), 1);
 		System.out.println("예매가 취소되었습니다.");
 	} // 예매취소
 
@@ -215,6 +219,10 @@ public class TicketController {
 		System.out.println("좌석 번호:");
 		t.setSeatno(sc.next());
 		if (using(t) != null) {
+			if(t2.getSeatno().equals(t.getSeatno())) {
+				System.out.println("기존 좌석과 동일합니다.");
+				return;
+			}
 			for (String a : using(t)) {
 				if (a.equals(t.getSeatno())) {
 					System.out.println("이미 사용중인 좌석을 선택하셨습니다");

@@ -63,7 +63,7 @@ public class Members {
 
 	@Override
 	public String toString() {
-		return "Members [uname=" + uname + ", mid=" + mid + ", pwd=" + pwd + ", birth=" + birth + ", point=" + point
+		return "Members [회원이름=" + uname + ", ID=" + mid + ", PWD=" + pwd + ", 생년월일=" + birth + ", 포인트=" + point
 				+ "]";
 	}
 
