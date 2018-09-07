@@ -102,7 +102,7 @@ public class ScreenDaoImpl implements ScreenDao {
 		ResultSet rs;
 		conn = db.getConnection();
 		ArrayList<Screen> list = new ArrayList<Screen>();
-		String sql = "select * from Screen";
+		String sql = "select * from Screen order by 1 asc";
 		PreparedStatement pstmt;
 		try {
 			pstmt = conn.prepareStatement(sql);

@@ -40,9 +40,8 @@ public class MembersController {
 		System.out.print("생년월일(yyyy/mm/dd):");
 		m.setBirth(sc.next());
 		
-		if(m.getBirth().length() != 10)
 		service.addMembers(m);
-		System.out.print("가입이 완료되었습니다.");
+		System.out.println("가입이 완료되었습니다.");
 	}
 
 	public void login(Scanner sc) {
@@ -137,6 +136,10 @@ public class MembersController {
 
 	public static int getPoint(String mid) {
 		return s.getMembers(mid).getPoint();
+	}
+	
+	public static void usePoint(Members m, int sign) {
+		s.editPoint(m, sign);;
 	}
 
 	public void getAll() {

@@ -103,7 +103,7 @@ public class TicketDaoImpl implements TicketDao {
 		ResultSet rs;
 		conn = db.getConnection();
 		ArrayList<Ticket> list = new ArrayList<Ticket>();
-		String sql = "select tno, mid, t.mno, mname, tprice, t.sno,  to_char(mday, 'yy/mm/dd')||' '||mtime, scrno, seatno from Ticket t, Movie m, Schedule s where t.mno=m.mno and t.sno=s.sno and s.sno=?";
+		String sql = "select tno, mid, t.mno, mname, tprice, t.sno,  to_char(mday, 'yy/mm/dd')||' '||mtime, scrno, seatno from Ticket t, Movie m, Schedule s where t.mno=m.mno and t.sno=s.sno and s.sno=? order by 1 asc";
 		PreparedStatement pstmt;
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -131,7 +131,7 @@ public class TicketDaoImpl implements TicketDao {
 		ResultSet rs;
 		conn = db.getConnection();
 		ArrayList<Ticket> list = new ArrayList<Ticket>();
-		String sql = "select tno, mid, t.mno, mname, tprice, t.sno,  to_char(mday, 'yy/mm/dd')||' '||mtime, scrno, seatno from Ticket t, Movie m, Schedule s where t.mno=m.mno and t.sno=s.sno and mid=?";
+		String sql = "select tno, mid, t.mno, mname, tprice, t.sno,  to_char(mday, 'yy/mm/dd')||' '||mtime, scrno, seatno from Ticket t, Movie m, Schedule s where t.mno=m.mno and t.sno=s.sno and mid=? order by 1 asc";
 		PreparedStatement pstmt;
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -158,7 +158,7 @@ public class TicketDaoImpl implements TicketDao {
 		ResultSet rs;
 		conn = db.getConnection();
 		ArrayList<Ticket> list = new ArrayList<Ticket>();
-		String sql = "select tno, mid, t.mno, mname, tprice, t.sno,  to_char(mday, 'yy/mm/dd')||' '||mtime, scrno, seatno from Ticket t, Movie m, Schedule s where t.mno=m.mno and t.sno=s.sno";
+		String sql = "select tno, mid, t.mno, mname, tprice, t.sno,  to_char(mday, 'yy/mm/dd')||' '||mtime, scrno, seatno from Ticket t, Movie m, Schedule s where t.mno=m.mno and t.sno=s.sno order by 1 asc";
 		PreparedStatement pstmt;
 		try {
 			pstmt = conn.prepareStatement(sql);

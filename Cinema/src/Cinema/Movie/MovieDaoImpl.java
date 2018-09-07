@@ -105,7 +105,7 @@ public class MovieDaoImpl implements MovieDao {
 		ResultSet rs;
 		ArrayList<Movie> list = new ArrayList<Movie>();
 		conn = db.getConnection();
-		String sql = "select * from Movie where mname like '%" + mname + "%'";
+		String sql = "select * from Movie where mname like '%" + mname + "%' order by 1 asc";
 		PreparedStatement pstmt;
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -132,7 +132,7 @@ public class MovieDaoImpl implements MovieDao {
 		ResultSet rs;
 		ArrayList<Movie> list = new ArrayList<Movie>();
 		conn = db.getConnection();
-		String sql = "select * from Movie where story like '%" + story + "%'";
+		String sql = "select * from Movie where story like '%" + story + "%' order by 1 asc";
 		PreparedStatement pstmt;
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -159,7 +159,7 @@ public class MovieDaoImpl implements MovieDao {
 		ResultSet rs;
 		ArrayList<Movie> list = new ArrayList<Movie>();
 		conn = db.getConnection();
-		String sql = "select * from Movie where genre = ?";
+		String sql = "select * from Movie where genre = ? order by 1 asc";
 		PreparedStatement pstmt;
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -187,7 +187,7 @@ public class MovieDaoImpl implements MovieDao {
 		ResultSet rs;
 		ArrayList<Movie> list = new ArrayList<Movie>();
 		conn = db.getConnection();
-		String sql = "select * from movie";
+		String sql = "select * from movie order by 1 asc";
 		PreparedStatement pstmt;
 		try {
 			pstmt = conn.prepareStatement(sql);

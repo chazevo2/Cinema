@@ -104,7 +104,7 @@ public class ReviewDaoImpl implements ReviewDao {
 		ResultSet rs;
 		ArrayList<Review> list = new ArrayList<Review>();
 		conn = db.getConnection();
-		String sql = "select rno, r.mno, mname, mid, score, memo from Review r, Movie m where r.mno=m.mno and mid=?";
+		String sql = "select rno, r.mno, mname, mid, score, memo from Review r, Movie m where r.mno=m.mno and mid=? order by 1 asc";
 		PreparedStatement pstmt;
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -131,7 +131,7 @@ public class ReviewDaoImpl implements ReviewDao {
 		ResultSet rs;
 		ArrayList<Review> list = new ArrayList<Review>();
 		conn = db.getConnection();
-		String sql = "select rno, r.mno, mname, mid, score, memo from Review r, Movie m where r.mno=m.mno and mname like '%" + mname + "%'";
+		String sql = "select rno, r.mno, mname, mid, score, memo from Review r, Movie m where r.mno=m.mno and mname like '%" + mname + "%' order by 1 asc";
 		PreparedStatement pstmt;
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -183,7 +183,7 @@ public class ReviewDaoImpl implements ReviewDao {
 		ResultSet rs;
 		ArrayList<Review> list = new ArrayList<Review>();
 		conn = db.getConnection();
-		String sql = "select rno, r.mno, mname, mid, score, memo from Review r, Movie m where r.mno=m.mno and score >= ?";
+		String sql = "select rno, r.mno, mname, mid, score, memo from Review r, Movie m where r.mno=m.mno and score >= ? order by 5 asc";
 		PreparedStatement pstmt;
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -210,7 +210,7 @@ public class ReviewDaoImpl implements ReviewDao {
 		ResultSet rs;
 		ArrayList<Review> list = new ArrayList<Review>();
 		conn = db.getConnection();
-		String sql = "select rno, r.mno, mname, mid, score, memo from Review r, Movie m where r.mno=m.mno";
+		String sql = "select rno, r.mno, mname, mid, score, memo from Review r, Movie m where r.mno=m.mno order by 1 asc";
 		PreparedStatement pstmt;
 		try {
 			pstmt = conn.prepareStatement(sql);

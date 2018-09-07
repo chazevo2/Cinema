@@ -11,6 +11,8 @@ public interface MembersService {
 	void delMembers(String mid);
 
 	void editPwd(Members m);
+	
+	void editPoint(Members m, int sign);
 
 	Members getMembers(String mid);
 

@@ -3,6 +3,7 @@ package Cinema.Ticket;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import Cinema.Members.Members;
 import Cinema.Members.MembersController;
 import Cinema.Movie.MovieController;
 import Cinema.Schedule.ScheduleController;
@@ -80,11 +81,13 @@ public class TicketController {
 
 	public void addTicket(Scanner sc) {
 		Ticket t = new Ticket();
+		Members m = new Members();
 		t.setMid(MembersController.getLoginId());
 		if (t.getMid().equals("admin")) {
 			System.out.print("회원 ID:");
 			t.setMid(sc.next());
 		}
+		m.setMid(t.getMid());
 		System.out.print("영화 번호:");
 		t.setMno(sc.nextInt());
 		int rate = MovieController.getRate(t.getMno());
@@ -107,6 +110,7 @@ public class TicketController {
 			System.out.println("잘못된 입력입니다.");
 			return;
 		}
+		m.getPoint();
 		boolean flag = seatView(t, ScheduleController.getScrno(t.getSno()));
 		if (!flag) {
 			return;
@@ -136,6 +140,7 @@ public class TicketController {
 		}
 		service.addTicket(t);
 		ScheduleController.editSeat(t.getSno(), 1);
+		MembersController.usePoint(m, 0);
 		System.out.println("예매가 완료되었습니다.");
 	}
 

@@ -167,7 +167,7 @@ public class ScheduleDaoImpl implements ScheduleDao {
 		ResultSet rs;
 		conn = db.getConnection();
 		ArrayList<Schedule> list = new ArrayList<Schedule>();
-		String sql = "select sno, s.mno, mname, to_char(mday, 'yy/mm/dd'), mtime, sprice, scrno, ex_seat from Schedule s, Movie m where s.mno = m.mno and mname like '%" + mname + "%'";
+		String sql = "select sno, s.mno, mname, to_char(mday, 'yy/mm/dd'), mtime, sprice, scrno, ex_seat from Schedule s, Movie m where s.mno = m.mno and mname like '%" + mname + "%' order by 1 asc";
 		PreparedStatement pstmt;
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -195,7 +195,7 @@ public class ScheduleDaoImpl implements ScheduleDao {
 		ResultSet rs;
 		ArrayList<Schedule> list = new ArrayList<Schedule>();
 		conn = db.getConnection();
-		String sql = "select sno, s.mno, mname, to_char(mday, 'yy/mm/dd'), mtime, sprice, scrno, ex_seat from Schedule s, Movie m where s.mno = m.mno and to_char(mday, 'MMDD')>=?";
+		String sql = "select sno, s.mno, mname, to_char(mday, 'yy/mm/dd'), mtime, sprice, scrno, ex_seat from Schedule s, Movie m where s.mno = m.mno and to_char(mday, 'MMDD')>=? order by 1 asc";
 		PreparedStatement pstmt;
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -222,7 +222,7 @@ public class ScheduleDaoImpl implements ScheduleDao {
 		ResultSet rs;
 		ArrayList<Schedule> list = new ArrayList<Schedule>();
 		conn = db.getConnection();
-		String sql = "select sno, s.mno, mname, to_char(mday, 'yy/mm/dd'), mtime, sprice, scrno, ex_seat from Schedule s, Movie m where s.mno = m.mno";
+		String sql = "select sno, s.mno, mname, to_char(mday, 'yy/mm/dd'), mtime, sprice, scrno, ex_seat from Schedule s, Movie m where s.mno = m.mno order by 1 asc";
 		PreparedStatement pstmt;
 		try {
 			pstmt = conn.prepareStatement(sql);

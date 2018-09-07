@@ -3,6 +3,7 @@ package Cinema.Review;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import Cinema.Members.Members;
 import Cinema.Members.MembersController;
 
 public class ReviewController {
@@ -31,6 +32,10 @@ public class ReviewController {
 		r.setMemo(sc.nextLine());
 		r.setMemo(sc.nextLine());
 		service.addReview(r);
+		Members m = new Members();
+		m.setMid(r.getMid());
+		m.setPoint(50);
+		MembersController.usePoint(m, 1);
 		System.out.println("추가 완료");
 	}
 
@@ -79,7 +84,6 @@ public class ReviewController {
 			System.out.println("작성글이 존재하지 않습니다.");
 			return;
 		}
-		System.out.println("내가 작성한 리뷰목록");
 		for(Review r1 : list)
 			System.out.println(r1);
 		System.out.print("삭제할 리뷰의 번호:");

@@ -74,6 +74,29 @@ public class MembersDaoImpl implements MembersDao {
 			db.disConn();
 		}
 	}
+	
+	@Override
+	public void updatePoint(Members m, int sign) {
+		// TODO Auto-generated method stub
+		conn = db.getConnection();
+		String sql;
+		if(sign == 1)
+			sql = "update Members set point=point+? where mid=?";
+		else
+			sql = "update Members set point=point-? where mid=?";
+		PreparedStatement pstmt;
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, m.getPoint());
+			pstmt.setString(2, m.getMid());
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			db.disConn();
+		}
+	}
 
 	@Override
 	public Members select(String mid) {

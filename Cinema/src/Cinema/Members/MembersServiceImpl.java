@@ -41,6 +41,12 @@ public class MembersServiceImpl implements MembersService {
 		// TODO Auto-generated method stub
 		dao.update(m);
 	}
+	
+	@Override
+	public void editPoint(Members m, int sign) {
+		// TODO Auto-generated method stub
+		dao.updatePoint(m, sign);
+	}
 
 	@Override
 	public Members getMembers(String mid) {
